@@ -2,7 +2,7 @@ package main
 
 import (
 	"pathfinder"
-	"fmt"
+	"board"
 )
 
 func main() {
@@ -18,11 +18,14 @@ func main() {
 	o o o o o o o o o o
 	o o o o o o o o o o 9,0
 	 */
-	b := pathfinder.NewBoard(10, 10, 3, 4, 9, 8)
+	b := board.NewBoard(10, 10, 9, 8)
+	b.SetBlocked(8, 8)
+	b.SetBlocked(8, 7)
+	b.SetBlocked(9, 7)
+	b.Draw()
 
-	p := pathfinder.NewPathfinder(b)
+	p := pathfinder.NewPathfinder(b, 3, 4)
 	path := p.Traverse()
-
-	fmt.Println(path)
+	path.Draw()
 }
 
